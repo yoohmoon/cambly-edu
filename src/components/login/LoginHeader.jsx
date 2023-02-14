@@ -2,16 +2,21 @@ import { darken, lighten } from "polished";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function LoginHeader() {
+function LoginHeader({ siguptext, buttontext, onClick }) {
   const navigate = useNavigate();
 
   return (
     <Container>
       <h1>Cambly Logo</h1>
       <SignUpWrapper>
-        <SignUpText>Don't have an account yet?</SignUpText>
-        <Button onClick={() => navigate("/signup")}>
-          <StyledLink>회원가입</StyledLink>
+        <SignUpText>{siguptext}</SignUpText>
+        <Button
+          onClick={
+            // () => navigate("/signup")
+            onClick
+          }
+        >
+          <StyledLink>{buttontext}</StyledLink>
         </Button>
       </SignUpWrapper>
     </Container>

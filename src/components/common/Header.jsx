@@ -14,7 +14,11 @@ function Header() {
 // 로고 + 분류 / nav bar 2가지의 헤더 구성
 
 const Container = styled.div`
-  /* display: flex; */
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+
+  /* min-height: 60px; */
 `;
 
 export default Header;

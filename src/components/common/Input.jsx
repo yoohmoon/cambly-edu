@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-function Input({ type, placeholder, onChange, value }) {
+function Input({ type, name, placeholder, onChange, value }) {
   return (
     <Container>
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         onChange={onChange}
         value={value}

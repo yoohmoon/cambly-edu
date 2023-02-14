@@ -4,7 +4,7 @@ import Input from "../common/Input";
 import { darken } from "polished";
 import { useState } from "react";
 
-function LoginForm() {
+function LoginForm({ titletext, fbtext, googletext, appletext, buttontext }) {
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -12,36 +12,36 @@ function LoginForm() {
 
   const handleInputs = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value);
+    console.log(e.target.name);
     setInputs({
       ...inputs,
       [name]: value,
       // 여기서 ...inputs를 통해 불변성을 지키는 건 어떤 의미지? 기존에 다른 유저들이 적었던 로그인 정보를 잊어버리지 않고 db에 정보를 남겨둔다는 의도인가?
     });
   };
-
+  console.log(inputs);
   return (
     <Container>
       <Wrapper>
-        <h2>Log into Cambly</h2>
+        <h2>{titletext}</h2>
         <SnsBtn>
           <FbBtn>
             <img
               src="https://d38emex6h5e12i.cloudfront.net/logo/ico-facebook.svg"
               alt="facebook icon"
             />
-            <span>Login with Google</span>
+            <span>{fbtext}</span>
           </FbBtn>
           <GgBtn>
             <img
               src="https://d38emex6h5e12i.cloudfront.net/logo/ico-google.svg"
               alt="google icon"
             />
-            <span>Login with Google</span>
+            <span>{googletext}</span>
           </GgBtn>
           <ApBtn>
             <AiFillApple color="white" size="31" />
-            <span>Login with Apple</span>
+            <span>{appletext}</span>
           </ApBtn>
         </SnsBtn>
         <TextWrapper>
@@ -51,7 +51,7 @@ function LoginForm() {
           <Input
             type="email"
             name="email"
-            // value={inputs.email}
+            value={inputs.email}
             // value를 포함시키면 인풋 값이 입력이 안되고 고정되는 문제 어떻게 해결??
             placeholder="이메일을 입력하세요"
             onChange={handleInputs}
@@ -63,7 +63,7 @@ function LoginForm() {
             placeholder="비밀번호를 입력하세요"
             onChange={handleInputs}
           />
-          <LoginButton>이메일 주소로 로그인</LoginButton>
+          <LoginButton>{buttontext}</LoginButton>
         </LoginInputForm>
       </Wrapper>
     </Container>
