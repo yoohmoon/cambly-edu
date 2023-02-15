@@ -7,7 +7,7 @@ import TutorModal from "./TutorModal";
 const tutorInfo = [
   {
     id: 1,
-    name: "Josha",
+    name: "Joshua",
     src: "https://www.cambly.com/fe/static/landing_page/tutors/highlighted/thumbnail_joshua.png",
     alt: "Josha pic",
     nationality: "미국",
