@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 
-function TutorModal({ setModalOpen }) {
+function TutorModal({
+  setModalOpen,
+  name,
+  nationality,
+  video_src,
+  img_src,
+  img_alt,
+  rating,
+  introduction,
+}) {
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -9,20 +18,14 @@ function TutorModal({ setModalOpen }) {
   return (
     <Container>
       <button onClick={closeModal}>X</button>
-      <video
-        controls
-        src="https://cambly.s3.us-west-2.amazonaws.com/landing_page/joshua_profile_vid_264.mp4"
-      ></video>
+      <video controls src={video_src}></video>
       <TutorProfile>
         <Tutor>
           <BasicInfo>
-            <img
-              src="https://www.cambly.com/fe/static/landing_page/tutors/highlighted/avatar_joshua.png"
-              alt="Joshua Profile"
-            />
+            <img src={img_src} alt={img_alt} />
             <TutorInfoText>
-              <p>Joshua P</p>
-              <p>미국</p>
+              <p>{name}</p>
+              <p>{nationality}</p>
             </TutorInfoText>
           </BasicInfo>
           <Rating>
@@ -34,14 +37,11 @@ function TutorModal({ setModalOpen }) {
               <AiFillStar color="#FFC929" />
             </StarWrapper>
 
-            <span>4.9</span>
+            <span>{rating}</span>
           </Rating>
         </Tutor>
-        <p>
-          안녕하세요, 세계를 여행하는 유튜버입니다. 여러분이 세계를 편하게
-          여행할 수 있도록 영어를 가르쳐드릴게요!
-        </p>
-        <CtaButton>Joshua와 영어 배우기</CtaButton>
+        <p>{introduction}</p>
+        <CtaButton>{name}와 영어 배우기</CtaButton>
       </TutorProfile>
     </Container>
   );
