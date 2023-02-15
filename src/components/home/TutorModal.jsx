@@ -1,30 +1,13 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
-import { useEffect, useRef } from "react";
 
 function TutorModal({ setModalOpen }) {
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  //   modal 창을 useRef로 취득
-  const modalRef = useRef < HTMLDivElement > null;
-
-  useEffect(() => {
-    const handler = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setModalOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
-
   return (
-    <Container ref={modalRef}>
+    <Container>
       <button onClick={closeModal}>X</button>
       <video
         controls
