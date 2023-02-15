@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import TutorProfile from "./TutorProfile";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import { useState } from "react";
+import TutorModal from "./TutorModal";
 
 const tutorInfo = [
   {
@@ -38,6 +40,14 @@ const tutorInfo = [
 ];
 
 function TutorSection() {
+  // 모달창 노출 여부 state
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // 모달창 노출하는 함수
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
   return (
     <Container>
       <TextWrapper>
@@ -53,6 +63,7 @@ function TutorSection() {
       <ProfileWrapper>
         {tutorInfo.map((info) => (
           <TutorProfile
+            showModal={showModal}
             key={info.id}
             name={info.name}
             src={info.src}
@@ -61,6 +72,7 @@ function TutorSection() {
             rating={info.rating}
           />
         ))}
+        {modalOpen && <TutorModal setModalOpen={setModalOpen} />}
       </ProfileWrapper>
     </Container>
   );

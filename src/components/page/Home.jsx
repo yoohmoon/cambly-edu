@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../common/Header";
 import CurriSection from "../home/CurriSection";
 import MainSection from "../home/MainSection";
+import TutorModal from "../home/TutorModal";
 import TutorSection from "../home/TutorSection";
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
     <div>
       <Header />
       <MainSection />
-      <TutorSection />
+      <TutorSection onClick={showModal}>{/* <TutorModal /> */}</TutorSection>
       <CurriSection />
     </div>
   );
