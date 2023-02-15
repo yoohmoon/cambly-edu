@@ -1,18 +1,66 @@
 import styled from "styled-components";
 import TutorProfile from "./TutorProfile";
+import { FaChalkboardTeacher } from "react-icons/fa";
+
+const tutorInfo = [
+  {
+    id: 1,
+    name: "Josha",
+    src: "https://www.cambly.com/fe/static/landing_page/tutors/highlighted/thumbnail_joshua.png",
+    alt: "Josha pic",
+    nationality: "미국",
+    rating: 4.9,
+  },
+  {
+    id: 2,
+    name: "Whitney",
+    src: "https://www.cambly.com/fe/static/landing_page/tutors/highlighted/thumbnail_whitney.png",
+    alt: "Whitney pic",
+    nationality: "호주",
+    rating: 4.9,
+  },
+  {
+    id: 3,
+    name: "Nikola",
+    src: "https://www.cambly.com/fe/static/landing_page/tutors/highlighted/thumbnail_nikola.png",
+    alt: "thumbnail_nikola",
+    nationality: "미국",
+    rating: 4.8,
+  },
+  {
+    id: 4,
+    name: "Alana",
+    src: "https://www.cambly.com/fe/static/landing_page/tutors/highlighted/thumbnail_alana.png",
+    alt: "thumbnail_alana",
+    nationality: "영국",
+    rating: 4.8,
+  },
+];
 
 function TutorSection() {
   return (
     <Container>
       <TextWrapper>
-        <h2>나만의 튜터를 선택하세요!</h2>
+        <TitleWrapper>
+          <FaChalkboardTeacher color="#4D95EA" size="30" />
+          <h2>나만의 튜터를 선택하세요!</h2>
+        </TitleWrapper>
         <p>
           여러분에게 딱 맞는 성격, 경력을 가지고 관심 영역을 집중적으로 다루는
           튜터를 선택하세요!
         </p>
       </TextWrapper>
       <ProfileWrapper>
-        <TutorProfile />
+        {tutorInfo.map((info) => (
+          <TutorProfile
+            key={info.id}
+            name={info.name}
+            src={info.src}
+            alt={info.alt}
+            nationality={info.nationality}
+            rating={info.rating}
+          />
+        ))}
       </ProfileWrapper>
     </Container>
   );
@@ -24,9 +72,13 @@ const Container = styled.div`
 
   position: relative;
   z-index: 1;
+
+  padding: 50px;
 `;
 
 const TextWrapper = styled.div`
+  line-height: 50px;
+
   h2 {
     color: ${({ theme }) => theme.colors.main_blue};
   }
@@ -36,9 +88,23 @@ const TextWrapper = styled.div`
   }
 `;
 
+const TitleWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+`;
+
 const ProfileWrapper = styled.ul`
+  display: flex;
+  justify-content: center;
+
+  gap: 25px;
+
+  margin-top: 10px;
+
   /* background-color: #f8f8fb; */
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 `;
 
 /* 
