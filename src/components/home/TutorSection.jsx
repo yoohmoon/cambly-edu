@@ -88,7 +88,12 @@ function TutorSection() {
             rating={info.rating}
           />
         ))}
-        {modalOpen && <TutorModal setModalOpen={setModalOpen} />}
+
+        {modalOpen && (
+          <ModalContainer>
+            <TutorModal setModalOpen={setModalOpen} />
+          </ModalContainer>
+        )}
       </ProfileWrapper>
     </Container>
   );
@@ -133,6 +138,19 @@ const ProfileWrapper = styled.ul`
 
   /* background-color: #f8f8fb; */
   /* border: 1px solid #000; */
+`;
+
+const ModalContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* z-index: 1500; */
+  /* header보다 모달 백그라운드가 위로 가게 하는 법? */
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 /* 
