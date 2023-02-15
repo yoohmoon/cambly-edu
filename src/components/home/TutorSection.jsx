@@ -48,6 +48,10 @@ function TutorSection() {
     setModalOpen(true);
   };
 
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   /*   //   modal 창을 useRef로 취득
   const modalRef = useRef < HTMLDivElement > null;
 
@@ -90,7 +94,7 @@ function TutorSection() {
         ))}
 
         {modalOpen && (
-          <ModalContainer>
+          <ModalContainer onClick={closeModal}>
             <TutorModal setModalOpen={setModalOpen} />
           </ModalContainer>
         )}
