@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-function CurriBook({ slide, handleClick }) {
-  const { src, title, level, count } = slide;
+function CurriBook({ info }) {
+  const { src, title, level, count } = info;
 
-  // console.log(slide);
   return (
-    <Container onClick={() => handleClick(slide.id)}>
+    <Container>
       <CurriList>
         <li>
           <img src={src} alt={title} />
