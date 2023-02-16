@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { TbBooks } from "react-icons/tb";
 import CurriBook from "./CurriBook";
+import { useState } from "react";
 
 const bookInfo = [
   {
@@ -64,6 +65,12 @@ const bookInfo = [
 ];
 
 function CurriSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleSwipe = (direction) => {
+    setCurrentIndex((currentIndex) => currentIndex + direction);
+  };
+
   return (
     <Container>
       <TextWrapper>
@@ -78,19 +85,37 @@ function CurriSection() {
       </TextWrapper>
       <BookContainer>
         <CurriWrapper>
-          <BookWrapper>
-            {bookInfo.map((info) => (
-              <CurriBook
-                key={info.id}
-                title={info.title}
-                level={info.level}
-                count={info.count}
-                src={info.src}
-              />
-            ))}
-          </BookWrapper>
+          <SliderArea>
+            <Slider>
+              <SliderList>
+                <SliderTrack
+                  style={{
+                    transform: `translateX(${
+                      (-100 / bookInfo.length) * (0.5 + currentIndex)
+                    }%)`,
+                  }}
+                >
+                  {bookInfo.map((info) => (
+                    <CurriBook
+                      key={info.id}
+                      title={info.title}
+                      level={info.level}
+                      count={info.count}
+                      src={info.src}
+                    />
+                  ))}
+                </SliderTrack>
+              </SliderList>
+            </Slider>
+          </SliderArea>
 
-          <button>play/pause</button>
+          {/* <button>play/pause</button> */}
+          <button direction="prev" onClick={() => handleSwipe(-1)}>
+            prev
+          </button>
+          <button direction="next" onClick={() => handleSwipe(1)}>
+            next
+          </button>
         </CurriWrapper>
       </BookContainer>
     </Container>
@@ -121,7 +146,13 @@ const BookContainer = styled.div``;
 
 const CurriWrapper = styled.div``;
 
-const BookWrapper = styled.div`
+const SliderArea = styled.div``;
+
+const Slider = styled.div``;
+
+const SliderList = styled.div``;
+
+const SliderTrack = styled.div`
   display: flex;
   justify-content: center;
   gap: 17px;
