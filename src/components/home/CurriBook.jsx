@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-function CurriBook({ detailed_info, title, src }) {
+function CurriBook({ level, title, src, count }) {
   return (
     <Container>
       <CurriList>
         <li>
           <img src={src} alt={title} />
           <CurriInfo>
-            <p>{detailed_info}</p>
+            <p>
+              {level}&nbsp;•&nbsp;{count}
+            </p>
             <p>{title}</p>
           </CurriInfo>
         </li>

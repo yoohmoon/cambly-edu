@@ -5,51 +5,61 @@ import CurriBook from "./CurriBook";
 const bookInfo = [
   {
     id: 1,
-    detailed_info: "Basic &nbsp;•&nbsp; 10 lessons",
+    level: "Basic",
+    count: "10 lessons",
     title: "Basic Conversation Topics",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b895e541a832674533c18?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 2,
-    detailed_info: "Intermediate &nbsp;•&nbsp; 9 lessons",
+    level: "Intermediate",
+    count: "9 lessons",
     title: "Life in the Internet Age",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e0e8b212ac750e7dc9886ac?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 3,
-    detailed_info: "Intermediate &nbsp;•&nbsp; 10 lessons",
+    level: "Intermediate",
+    count: "10 lessons",
     title: "Intermediate Conversation Topics",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b99d0c4288f294426b643?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 4,
-    detailed_info: "Advanced &nbsp;•&nbsp; 10 lessons",
+    level: "Advanced",
+    count: "10 lessons",
     title: "Advanced Conversation Topics",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b99e60b114e9a327ceb66?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 5,
+    level: "Intermediate",
+    count: "7 lessons",
     detailed_info: "Intermediate &nbsp;•&nbsp; 7 lessons",
     title: "Caring for Our Planet",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b99f70f8f1e9f625e8317?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 6,
-    detailed_info: "Intermediate &nbsp;•&nbsp; 6 lessons",
+    level: "Intermediate",
+    count: "6 lessons",
     title: "Healthy Mind, Healthy Body",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b9a4c05342470fdddf8b8?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 7,
+    level: "Intermediate",
+    count: "10 lessons",
     detailed_info: "Intermediate &nbsp;•&nbsp; 10 lessons",
     title: "Business English",
     src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b9a5feb6295be78ddf8c3?h=d41d8cd98f00b204e9800998ecf8427e",
   },
   {
     id: 8,
-    detailed_info: "Advanced &nbsp;•&nbsp; 10 lessons",
-    title: "Advanced Conversation Topics",
-    src: "https://camblycurriculumicons.s3.amazonaws.com/5e2b99e60b114e9a327ceb66?h=d41d8cd98f00b204e9800998ecf8427e",
+    level: "Advanced",
+    count: "9 lessons",
+    title: "Academic English",
+    src: "https://camblycurriculumicons.s3.amazonaws.com/5fa1de81b728c84f4ccaaa2f?h=d41d8cd98f00b204e9800998ecf8427e",
   },
 ];
 
@@ -73,7 +83,8 @@ function CurriSection() {
               <CurriBook
                 key={info.id}
                 title={info.title}
-                detailed_info={info.detailed_info}
+                level={info.level}
+                count={info.count}
                 src={info.src}
               />
             ))}
@@ -112,6 +123,7 @@ const CurriWrapper = styled.div``;
 
 const BookWrapper = styled.div`
   display: flex;
+  justify-content: center;
   gap: 17px;
 `;
 
