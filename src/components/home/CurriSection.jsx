@@ -67,6 +67,7 @@ const bookInfo = [
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();
+  console.log(callback);
   useEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
@@ -90,9 +91,9 @@ function CurriSection() {
     setCurrentIndex((currentIndex) => currentIndex + direction);
   };
  */
-  useInterval(() => {
-    setCurrentIndex((currentIndex) => currentIndex + 1);
-  }, 100);
+  // useInterval(() => {
+  //   setCurrentIndex((currentIndex) => currentIndex + 1);
+  // }, 100);
 
   const items = [
     {
@@ -168,6 +169,7 @@ function CurriSection() {
     }
     return [...addedFront, ...items, ...addedFront];
   }
+  console.log(slides);
 
   const itemSize = items.length;
   // itemSize는 items 배열(기존 curriInfo 배열에 앞 뒤로 요소를 추가한 배열을 의미함)의 길이.
