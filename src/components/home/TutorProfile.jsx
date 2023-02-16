@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 
-function TutorProfile({ name, nationality, rating, src, alt, showModal }) {
+function TutorProfile({
+  name,
+  nationality,
+  rating,
+  handleModal,
+  src,
+  alt,
+  showModal,
+  id,
+}) {
+  console.log(id);
   return (
     <Container>
-      <ProfileButton onClick={showModal}>
+      <ProfileButton onClick={() => handleModal(id)}>
         <img src={src} alt={alt} />
         <TextInfo>
           <TextBox>

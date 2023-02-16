@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import { AiFillStar } from "react-icons/ai";
 
-function TutorModal({
-  setModalOpen,
-  name,
-  nationality,
-  video_src,
-  img_src,
-  img_alt,
-  rating,
-  introduction,
-}) {
+function TutorModal({ modal, setModal }) {
+  const {
+    video_src,
+    img_src,
+    img_alt,
+    name,
+    nationality,
+    rating,
+    introduction,
+  } = modal;
   const closeModal = () => {
-    setModalOpen(false);
+    // setModalOpen(false);
+    setModal(null );
   };
 
   return (

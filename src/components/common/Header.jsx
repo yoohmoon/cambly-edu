@@ -16,7 +16,9 @@ function Header() {
 const Container = styled.div`
   position: fixed;
   width: 100%;
-  z-index: 3;
+  /* z-index: 3; */
+  /* 헤더 영역 모달 창 클릭시 백그라운드에 안가려지는 문제 : 
+  header에 z-index 삭제하는 방법으로 해결 */
 
   /* min-height: 60px; */
 `;

@@ -97,6 +97,7 @@ const modalInfo = [
 function TutorSection() {
   // 모달창 노출 여부 state
   const [modalOpen, setModalOpen] = useState(false);
+  const [modal, setModal] = useState(null);
 
   // 모달창 노출하는 함수
   const showModal = () => {
@@ -106,6 +107,12 @@ function TutorSection() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const handleModal = (id) => {
+    const modal = modalInfo.find((item) => item.id === id);
+    setModal(modal);
+  };
+  console.log(modal);
 
   /*   //   modal 창을 useRef로 취득
   const modalRef = useRef < HTMLDivElement > null;
@@ -138,31 +145,27 @@ function TutorSection() {
       <ProfileWrapper>
         {tutorInfo.map((info) => (
           <TutorProfile
-            showModal={showModal}
+            // showModal={showModal}
             key={info.id}
+            id={info.id}
             name={info.name}
             src={info.src}
             alt={info.alt}
             nationality={info.nationality}
             rating={info.rating}
+            handleModal={handleModal}
           />
         ))}
 
-        {modalOpen && (
+        {modal && (
           <ModalContainer onClick={closeModal}>
-            {modalInfo.map((info) => (
+            {
               <TutorModal
-                setModalOpen={setModalOpen}
-                key={info.id}
-                name={info.name}
-                nationality={info.nationality}
-                video_src={info.video_src}
-                img_src={info.img_src}
-                img_alt={info.img_alt}
-                rating={info.rating}
-                introduction={info.introduction}
+                // setModalOpen={setModalOpen}
+                modal={modal}
+                setModal={setModal}
               />
-            ))}
+            }
             {/* <TutorModal setModalOpen={setModalOpen} /> */}
           </ModalContainer>
         )}
@@ -217,7 +220,7 @@ const ModalContainer = styled.div`
   top: 0;
   left: 0;
 
-  /* z-index: 1500; */
+  z-index: 1500;
   /* header보다 모달 백그라운드가 위로 가게 하는 법? */
 
   width: 100%;
