@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../common/Header";
+import CourseIcon from "../courses/CourseIcon";
 
 function CourseDetail() {
   const navigate = useNavigate();
@@ -9,9 +10,10 @@ function CourseDetail() {
       <Header />
       <Wrapper>
         <LeftSection>
-          <div>
-            <span onClick={() => navigate("/courses")}>모든 과정</span>
-          </div>
+          <Navigator>
+            <span onClick={() => navigate("/courses")}> &lt; 모든 과정</span>
+          </Navigator>
+          <CourseIcon />
         </LeftSection>
         <RightSection></RightSection>
       </Wrapper>
@@ -26,6 +28,13 @@ const Wrapper = styled.div`
 `;
 
 const LeftSection = styled.div``;
+
+const Navigator = styled.div`
+  span {
+    color: ${({ theme }) => theme.colors.main_color};
+    cursor: pointer;
+  }
+`;
 
 const RightSection = styled.div``;
 
