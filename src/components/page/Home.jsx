@@ -1,24 +1,22 @@
-import { useState } from "react";
 import Header from "../common/Header";
 import CurriSection from "../home/CurriSection";
 import MainSection from "../home/MainSection";
-import TutorModal from "../home/TutorModal";
 import TutorSection from "../home/TutorSection";
 
 function Home() {
-  // 모달창 노출 여부 state
+  /*  // 모달창 노출 여부 state
   const [modalOpen, setModalOpen] = useState(false);
 
   // 모달창 노출하는 함수
   const showModal = () => {
     setModalOpen(true);
-  };
+  }; */
 
   return (
     <div>
       <Header />
       <MainSection />
-      <TutorSection onClick={showModal}>{/* <TutorModal /> */}</TutorSection>
+      <TutorSection />
       <CurriSection />
     </div>
   );
