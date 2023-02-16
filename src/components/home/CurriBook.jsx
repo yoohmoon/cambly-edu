@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
-function CurriBook() {
+function CurriBook({ detailed_info, title, src }) {
   return (
     <Container>
       <CurriList>
         <li>
-          <img
-            src="https://camblycurriculumicons.s3.amazonaws.com/5e2b895e541a832674533c18?h=d41d8cd98f00b204e9800998ecf8427e"
-            alt="Basic Conversation Topics"
-          />
+          <img src={src} alt={title} />
           <CurriInfo>
-            <p>Basic &nbsp;•&nbsp; 10 lessons</p>
-            <p>Basic Conversation Topics</p>
+            <p>{detailed_info}</p>
+            <p>{title}</p>
           </CurriInfo>
         </li>
       </CurriList>
