@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { TbBooks } from "react-icons/tb";
 import CurriBook from "./CurriBook";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const bookInfo = [
   {
@@ -64,12 +64,33 @@ const bookInfo = [
   },
 ];
 
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
 function CurriSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleSwipe = (direction) => {
     setCurrentIndex((currentIndex) => currentIndex + direction);
   };
+
+  useInterval(() => {
+    setCurrentIndex((currentIndex) => currentIndex + 1);
+  }, 100);
 
   return (
     <Container>
