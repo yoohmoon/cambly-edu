@@ -187,7 +187,8 @@ function CurriSection() {
     const click = slides.find((slide) => slide.id === id);
     // 사용자가 클릭한 교재(커리큘럼 북)의 정보가 담긴 slides 배열의 한 요소를 보여준다.
 
-    navigate(`course/${click.id}`);
+    // navigate("/courses");
+    navigate(`/courses/${click.id}`);
     console.log("클릭한 커리큘럼 아이디!", click.id);
   };
 
@@ -221,7 +222,8 @@ function CurriSection() {
                       <CurriBook
                         key={slideIndex}
                         slide={slide}
-                        onClick={handleClick}
+                        handleClick={handleClick}
+                        // onClick={() => handleClick(slide.id)}
                         /* key={info.id}
                         title={info.title}
                         level={info.level}
