@@ -83,13 +83,13 @@ function useInterval(callback, delay) {
 }
 
 function CurriSection() {
-  const 양끝에_추가될_데이터수 = 8;
+  const 양끝에_추가될_데이터수 = 2;
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  /* 
   const handleSwipe = (direction) => {
     setCurrentIndex((currentIndex) => currentIndex + direction);
   };
-
+ */
   useInterval(() => {
     setCurrentIndex((currentIndex) => currentIndex + 1);
   }, 100);
@@ -192,6 +192,30 @@ function CurriSection() {
     console.log("클릭한 커리큘럼 아이디!", click.id);
   };
 
+  const transitionTime = 3000;
+  const transitionStyle = `transform ${transitionTime}ms ease 0s`;
+  const [slideTransition, setTransition] = useState(transitionStyle);
+
+  function replaceSlide(index) {
+    setTimeout(() => {
+      setTransition("");
+      setCurrentIndex(index);
+    }, transitionTime);
+  }
+
+  function handleSwipe(direction) {
+    let index = currentIndex + direction;
+    setCurrentIndex(index);
+    if (index < 양끝에_추가될_데이터수) {
+      index += itemSize;
+      replaceSlide(index);
+    } else if (index >= itemSize + 양끝에_추가될_데이터수) {
+      index -= -itemSize;
+      replaceSlide(index);
+    }
+    setTransition(transitionStyle);
+  }
+
   return (
     <Container>
       <TextWrapper>
@@ -214,6 +238,7 @@ function CurriSection() {
                     transform: `translateX(${
                       (-100 / slides.length) * (0.5 + currentIndex)
                     }%)`,
+                    transition: slideTransition,
                   }}
                 >
                   {slides.map((slide, slideIndex) => {
