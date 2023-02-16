@@ -130,7 +130,7 @@ function CurriSection() {
   const itemSize = items.length;
   // itemSize는 items 배열(기존 curriInfo 배열에 앞 뒤로 요소를 추가한 배열을 의미함)의 길이.
 
-  const navigate = useNavigate();
+
   const handleClick = (id) => {
     const click = slides.find((slide) => slide.id === id);
     // 사용자가 클릭한 교재(커리큘럼 북)의 정보가 담긴 slides 배열의 한 요소를 보여준다.
@@ -140,6 +140,13 @@ function CurriSection() {
     console.log("클릭한 커리큘럼 아이디!", click.id);
   };
  */
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    const click = bookInfo.find((info) => info.id === id);
+
+    navigate(`/courses/${click.id}`);
+  };
+
   return (
     <Container>
       <TextWrapper>
@@ -158,6 +165,7 @@ function CurriSection() {
             {bookInfo.map((info) => {
               return (
                 <CurriBook
+                  handleClick={handleClick}
                   key={info.id}
                   info={info}
                   // onClick={() => handleClick(slide.id)}
