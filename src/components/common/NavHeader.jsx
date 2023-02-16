@@ -10,7 +10,7 @@ function NavHeader() {
             <StyledLink to="/">소개 - 현재</StyledLink>
           </Menu>
           <Menu>
-            <StyledLink to="course">커리큘럼</StyledLink>
+            <StyledLink to="courses">커리큘럼</StyledLink>
           </Menu>
           <Menu>
             <StyledLink to="#">가격</StyledLink>

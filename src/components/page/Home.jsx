@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Header from "../common/Header";
 import CurriSection from "../home/CurriSection";
 import MainSection from "../home/MainSection";

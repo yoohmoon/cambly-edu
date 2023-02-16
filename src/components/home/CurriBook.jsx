@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-function CurriBook({ level, title, src, count }) {
+function CurriBook({ slide }) {
+  const { src, title, level, count } = slide;
+
+  // console.log(slide);
   return (
     <Container>
       <CurriList>

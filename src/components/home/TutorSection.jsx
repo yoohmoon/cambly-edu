@@ -112,7 +112,7 @@ function TutorSection() {
     const modal = modalInfo.find((item) => item.id === id);
     setModal(modal);
   };
-  console.log(modal);
+  console.log("모달이 뭐니?", modal);
 
   /*   //   modal 창을 useRef로 취득
   const modalRef = useRef < HTMLDivElement > null;
