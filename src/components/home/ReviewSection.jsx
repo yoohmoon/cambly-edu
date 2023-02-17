@@ -11,8 +11,7 @@ function ReviewSection() {
       <ReviewWrapper>
         <ReviewText>
           <h3>
-            "언제든지 궁금한 부분을 물어볼 수 있고, 다양한 배경의 튜터들과 영어
-            능력을 나날이 업그레이드 할 수 있어요!"
+            "다양한 배경의 튜터들과 영어 능력을 나날이 업그레이드 할 수 있어요!"
           </h3>
           <p>Junyoung – 서울</p>
         </ReviewText>
@@ -59,6 +58,8 @@ const ReviewWrapper = styled.div`
 
   width: 450px;
   border: 1px solid #000;
+
+  text-align: center;
 `;
 
 const ReviewText = styled.div`
@@ -73,6 +74,13 @@ const ReviewBox = styled.div`
   flex-direction: column;
 
   align-items: center;
+
+  border: 1px solid #edf0f5;
+  border-radius: 12px;
+
+  background-color: #eff6fa;
+
+  margin-top: 30px;
 `;
 
 export default ReviewSection;
