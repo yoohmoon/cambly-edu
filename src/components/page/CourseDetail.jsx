@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../common/Header";
 import CourseIcon from "../courses/CourseIcon";
@@ -6,9 +6,16 @@ import { HiArrowLeftCircle, HiArrowRightCircle } from "react-icons/hi2";
 import { theme } from "../../styles";
 import SmallCourseIcon from "../courses/SmallCourseIcon";
 import { LeveledCurriculum } from "../courses/courseDb";
+import { useState } from "react";
 
 function CourseDetail() {
+  const { id } = useParams();
+  console.log(id);
+  const state = LeveledCurriculum.find((item) => item.id === parseInt(id));
+  console.log(state);
+  // 소문자로
   const navigate = useNavigate();
+
   return (
     <Container>
       <Header />

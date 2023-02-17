@@ -5,6 +5,7 @@ import { LeveledCurriculum } from "../courses/courseDb";
 import MediumCourseIcon from "../courses/MediumCourseIcon";
 
 function Course() {
+  // 네비게이트 필요 없음!! Link 태그로 바꾸기!!!
   const navigate = useNavigate();
   const handleNavigate = (id) => {
     const click = LeveledCurriculum.find((item) => item.id === id);
@@ -28,6 +29,7 @@ function Course() {
             <CurriWrapper>
               <BookWrapper>
                 {LeveledCurriculum.map((curri) => (
+                  // link 태그로 바꾸기.
                   <MediumCourseIcon
                     key={curri.id}
                     curri={curri}
