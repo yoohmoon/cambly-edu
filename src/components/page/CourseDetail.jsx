@@ -118,7 +118,7 @@ function CourseDetail() {
               </OthersHeader>
               <ItemList>
                 {LeveledCurriculum.map((curri) => (
-                  <SmallCourseIcon key={curri.id} />
+                  <SmallCourseIcon key={curri.id} curri={curri} />
                 ))}
               </ItemList>
             </Others>
@@ -132,11 +132,13 @@ function CourseDetail() {
 const Container = styled.div``;
 
 const MainSectionWrapper = styled.div`
+  height: 100vh;
   max-width: 1500px;
   margin: auto;
 `;
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   padding-top: 170px;
   padding: 200px 40px 30px 40px;
@@ -145,6 +147,7 @@ const Wrapper = styled.div`
 `;
 
 const LeftSection = styled.div`
+  width: 35%;
   max-width: 450px;
   padding: 16px;
 `;
@@ -172,6 +175,7 @@ const Navigator = styled.div`
 `;
 
 const RightSection = styled.div`
+  width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -226,7 +230,9 @@ const LessonList = styled.ol`
   }
 `;
 
-const Others = styled.div``;
+const Others = styled.div`
+  padding-bottom: 50px;
+`;
 
 const OthersHeader = styled.div`
   display: flex;
@@ -259,9 +265,13 @@ const ItemList = styled.ul`
   justify-content: space-between;
   align-items: center;
 
+  gap: 20px;
+
   margin-top: 20px;
-  border: 1px solid #000;
-  overflow-x: scroll;
+  /* border: 1px solid #000; */
+  overflow-x: auto;
+
+  width: 100%;
 `;
 
 export default CourseDetail;

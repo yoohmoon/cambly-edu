@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { LeveledCurriculum } from "./courseDb";
 
-function SmallCourseIcon() {
-  const { id, title, src, desc, level, length } = LeveledCurriculum;
+function SmallCourseIcon({ curri }) {
+  const { id, title, src, level, length } = curri;
   return (
     <Container>
       <CurriList>
