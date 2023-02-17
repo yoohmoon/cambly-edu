@@ -1,7 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../common/Header";
+import { LeveledCurriculum } from "../courses/courseDb";
+import MediumCourseIcon from "../courses/MediumCourseIcon";
 
 function Course() {
+  const navigate = useNavigate();
+  const handleNavigate = (id) => {
+    const click = LeveledCurriculum.find((item) => item.id === id);
+
+    navigate(`/courses/${click.id}`);
+  };
+
   return (
     <Container>
       <Header />
@@ -15,6 +25,19 @@ function Course() {
               시사 문제에 대해 논리정연한 의견을 표현하는 것까지, 다양한 레벨의
               과정을 통해 모두가 무언가를 배울 수 있습니다.
             </p>
+            <CurriWrapper>
+              <BookWrapper>
+                {LeveledCurriculum.map((curri) => (
+                  <MediumCourseIcon
+                    key={curri.id}
+                    curri={curri}
+                    handleNavigate={handleNavigate}
+                  />
+                ))}
+              </BookWrapper>
+
+              {/* <button>play/pause</button> */}
+            </CurriWrapper>
           </TextWrapper>
         </BasicCourse>
       </MainContent>
@@ -32,5 +55,23 @@ const MainContent = styled.div`
 const BasicCourse = styled.div``;
 
 const TextWrapper = styled.div``;
+
+// 캐러셀 부분!
+const CurriWrapper = styled.div`
+  margin: 0 auto;
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background-color: #fff;
+  max-width: 1380px;
+`;
+
+const BookWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 20px;
+`;
 
 export default Course;
