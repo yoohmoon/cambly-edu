@@ -56,10 +56,16 @@ function CourseDetail() {
             <Lessons>
               <LessonsTitle>강의 요강</LessonsTitle>
               <LessonList>
-                {state.lessonPlan.map((lesson, index) => (
+                {/* {state.lessonPlan.map((lesson) => (
                   <li>
+                    <span>{lesson.key}</span>
+                    <div>{lesson.value}</div>
+                  </li>
+                ))} */}
+                {state.lessonPlan.map((lesson, index) => (
+                  <li key={index}>
                     <span>{index + 1}</span>
-                    <div>{lesson[index]}</div>
+                    <div>{lesson}</div>
                   </li>
                 ))}
                 {/* <li>
