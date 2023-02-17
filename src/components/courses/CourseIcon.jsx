@@ -2,7 +2,8 @@ import { darken } from "polished";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function CourseIcon() {
+function CourseIcon({ state }) {
+  const { src, title, desc } = state;
   const navigate = useNavigate();
   const handleButton = () => {
     navigate("/signup");
@@ -10,14 +11,11 @@ function CourseIcon() {
 
   return (
     <Container>
-      <img
-        src="https://camblycurriculumicons.s3.amazonaws.com/5e2b895e541a832674533c18?h=d41d8cd98f00b204e9800998ecf8427e"
-        alt="Basic Conversation Topics"
-      />
+      <img src={src} alt={title} />
       <InfoWrapper>
         <TextWrapper>
-          <h3>Basic Conversation Topics</h3>
-          <p>비슷한 주제에 대한 스피킹하는 자신감 얻기</p>
+          <h3>{title}</h3>
+          <p>{desc}</p>
           <p>Cambly 수강권으로 등록하거나 무료 Cambly 체험으로 시작해보세요.</p>
         </TextWrapper>
         <button onClick={handleButton}>과정 시작하기</button>

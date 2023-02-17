@@ -6,7 +6,6 @@ import { HiArrowLeftCircle, HiArrowRightCircle } from "react-icons/hi2";
 import { theme } from "../../styles";
 import SmallCourseIcon from "../courses/SmallCourseIcon";
 import { LeveledCurriculum } from "../courses/courseDb";
-import { useState } from "react";
 
 function CourseDetail() {
   const { id } = useParams();
@@ -28,44 +27,30 @@ function CourseDetail() {
                 <span>모든 과정</span>
               </div>
             </Navigator>
-            <CourseIcon />
+            <CourseIcon state={state} />
           </LeftSection>
           <RightSection>
             <Overview>
               <OverviewTitle>개요</OverviewTitle>
               <Why>
                 <h5>이 과정을 왜 수강해야 하나요?</h5>
-                <p>
-                  문법과 어휘를 얼마나 배웠든 외국인과 말하는 것은 겁이 날 수
-                  있습니다. 영어에 대한 기본 지식은 있지만, 영어로 말할 기회가
-                  없었다면 이 코스틀 통해 첫 영어 대화를 쉽게 시작할 수
-                  있습니다.
-                </p>
+                <p>{state.why}</p>
               </Why>
               <What>
                 <h5>수강 후 어떤 능력이 향상되나요?</h5>
-                <p>
-                  이 코스는 CEFR A2 레벨의 어휘를 다룹니다. 다양한 공통, 일상
-                  주제에 대해 말하는 학습 중에 자신감을 얻게 됩니다. 또한,
-                  강사가 정답을 알려주고 실수를 짚어주면서 절대적인 문법 지식을
-                  얻게 됩니다.
-                </p>
+                <p>{state.what}</p>
               </What>
               <Level>
                 <h5>경험 레벨</h5>
-                <p>초급</p>
+                <p>{state.level}</p>
               </Level>
               <Length>
                 <h5>과정 길이</h5>
-                <p>10개 수업</p>
+                <p>{state.length}</p>
               </Length>
               <PreRequisite>
                 <h5>사전요건</h5>
-                <p>
-                  자신에 대한 소개와 어디에서 왔는지를 말할 수 있게 됩니다. 아직
-                  기본적인 소개에 익숙하지 않은 경우, "영어 대화 101" 코스로
-                  시작하세요.
-                </p>
+                <p>{state.pre}</p>
               </PreRequisite>
             </Overview>
             <Lessons>
@@ -214,11 +199,11 @@ const OverviewTitle = styled.h4`
   color: ${({ theme }) => theme.colors.course_title};
 `;
 
-const Why = styled.p``;
-const What = styled.p``;
-const Level = styled.p``;
-const Length = styled.p``;
-const PreRequisite = styled.p``;
+const Why = styled.div``;
+const What = styled.div``;
+const Level = styled.div``;
+const Length = styled.div``;
+const PreRequisite = styled.div``;
 
 const Lessons = styled.div``;
 const LessonsTitle = styled.h4`
