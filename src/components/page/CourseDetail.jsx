@@ -56,7 +56,13 @@ function CourseDetail() {
             <Lessons>
               <LessonsTitle>강의 요강</LessonsTitle>
               <LessonList>
-                <li>
+                {state.lessonPlan.map((lesson, index) => (
+                  <li>
+                    <span>{index + 1}</span>
+                    <div>{lesson[index]}</div>
+                  </li>
+                ))}
+                {/* <li>
                   <span>1</span>
                   <div>Foods You Love</div>
                 </li>
@@ -95,7 +101,7 @@ function CourseDetail() {
                 <li>
                   <span>10</span>
                   <div>Shopping Habits</div>
-                </li>
+                </li> */}
               </LessonList>
             </Lessons>
             <Others>
