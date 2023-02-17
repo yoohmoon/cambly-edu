@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { TbBooks } from "react-icons/tb";
 import CurriBook from "./CurriBook";
-import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const bookInfo = [
