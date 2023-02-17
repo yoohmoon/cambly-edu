@@ -4,6 +4,8 @@ import Header from "../common/Header";
 import CourseIcon from "../courses/CourseIcon";
 import { HiArrowLeftCircle, HiArrowRightCircle } from "react-icons/hi2";
 import { theme } from "../../styles";
+import SmallCourseIcon from "../courses/SmallCourseIcon";
+import { LeveledCurriculum } from "../courses/courseDb";
 
 function CourseDetail() {
   const navigate = useNavigate();
@@ -114,6 +116,11 @@ function CourseDetail() {
                   </div>
                 </CourseNavigator>
               </OthersHeader>
+              <ItemList>
+                {LeveledCurriculum.map((curri) => (
+                  <SmallCourseIcon key={curri.id} />
+                ))}
+              </ItemList>
             </Others>
           </RightSection>
         </Wrapper>
@@ -245,6 +252,16 @@ const CourseNavigator = styled.div`
 
     gap: 5px;
   }
+`;
+
+const ItemList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+  border: 1px solid #000;
+  overflow-x: scroll;
 `;
 
 export default CourseDetail;
