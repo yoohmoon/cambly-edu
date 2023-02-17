@@ -222,7 +222,8 @@ const TitleWrapper = styled.div`
 const BookContainer = styled.div``;
 
 const CurriWrapper = styled.div`
-  /* margin: 0 auto; */
+  margin: 0 auto;
+  margin-top: 20px;
   overflow: hidden;
   border: 1px solid #000;
   border-radius: 12px;
