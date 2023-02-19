@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../common/Header";
 import { LeveledCurriculum } from "../courses/courseDb";
 import MediumCourseIcon from "../courses/MediumCourseIcon";
+import FooterSection from "../home/FooterSection";
 
 function Course() {
   // 네비게이트 필요 없음!! Link 태그로 바꾸기!!!
@@ -43,6 +44,7 @@ function Course() {
           </TextWrapper>
         </BasicCourse>
       </MainContent>
+      <FooterSection />
     </Container>
   );
 }

@@ -6,6 +6,7 @@ import { HiArrowLeftCircle, HiArrowRightCircle } from "react-icons/hi2";
 import { theme } from "../../styles";
 import SmallCourseIcon from "../courses/SmallCourseIcon";
 import { LeveledCurriculum } from "../courses/courseDb";
+import FooterSection from "../home/FooterSection";
 
 function CourseDetail() {
   const { id } = useParams();
@@ -129,6 +130,8 @@ function CourseDetail() {
           </RightSection>
         </Wrapper>
       </MainSectionWrapper>
+      {/* <FooterSection /> */}
+      {/* footer 아래에 안가는 이유...? */}
     </Container>
   );
 }

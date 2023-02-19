@@ -7,7 +7,7 @@ function NavHeader() {
       <Gnb>
         <GnbList>
           <Menu>
-            <StyledLink to="/">소개 - 현재</StyledLink>
+            <StyledLink to="/"> 캠블리 소개</StyledLink>
           </Menu>
           <Menu>
             <StyledLink to="courses">커리큘럼</StyledLink>

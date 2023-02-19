@@ -1,5 +1,6 @@
 import Header from "../common/Header";
 import CurriSection from "../home/CurriSection";
+import FooterSection from "../home/FooterSection";
 import MainSection from "../home/MainSection";
 import ReviewSection from "../home/ReviewSection";
 import TutorSection from "../home/TutorSection";
@@ -20,6 +21,7 @@ function Home() {
       <TutorSection />
       <CurriSection />
       <ReviewSection />
+      <FooterSection />
     </div>
   );
 }
