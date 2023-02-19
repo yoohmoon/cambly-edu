@@ -12,7 +12,7 @@ const reviewList = [
     title:
       "“다양한 배경의 튜터들과 영어 능력을 나날이 업그레이드 할 수 있어요!”",
     src: "https://www.cambly.com/fe/static/landing_page/students/junyoung.png",
-    text: "번역물 검수자로 일하고 있을만큼 영어 실력이 좋은 편이지만, 해외에서 살아본 경험이 없는 저로서는 원어민 고유의 표현들을 이해하기 어려울 때가 있습니다. 하지만 캠블리가 있기 때문에 언제든지 궁금한 부분을 물어볼 수 있고, 다양한 배경의 튜터들과 이야기하며 저의 영어 능력을 나날이 업그레이드 할 수 있어 감사합니다.",
+    text: "번역물 검수자로 일하고 있을만큼 영어 실력이 좋은 편이지만, 해외에서 살아본 경험이 없는 저로서는 원어민 고유의 표현들을 이해하기 어려울 때가 있습니다. 하지만 캠블리가 있기 때문에 언제든지 궁금한 부분을 물어볼 수 있습니다.",
   },
   {
     id: 2,
@@ -38,7 +38,7 @@ const SLIDER_WIDTH = 400;
 const SLIDER_HEIGHT = 400;
 // HEIGHT를 정하지 않고, 컨텐츠 길이만큼 알아서 늘어나게 하고 싶을 땐???
 
-const inrange = (v: number, min: number, max: number) => {
+const inrange = (v, min, max) => {
   if (v < min) return min;
   if (v > max) return max;
   return v;
@@ -54,7 +54,7 @@ function ReviewSection() {
         <FaCommentDots color="#4D95EA" size="30" />
         <h2>고객 후기</h2>
       </TitleWrapper>
-      <Viewer style={{ width: SLIDER_WIDTH }}>
+      <Viewer style={{ width: 420 }}>
         <Slider
           style={{
             transform: `translateX(${-currentIndex * SLIDER_WIDTH + transX}px)`,
@@ -116,6 +116,8 @@ const Viewer = styled.div`
 
   margin: 50px auto;
 
+  /* border-left: rgba(0, 0, 0, 0.8); */
+
   /* width: SLIDER-WIDTH; */
   /* height: SLIDER-HEIGHT; */
 `;
@@ -123,6 +125,8 @@ const Viewer = styled.div`
 const Slider = styled.div`
   display: flex;
   align-items: center;
+
+  gap: 10px;
 `;
 
 const ReviewWrapper = styled.div`
