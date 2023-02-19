@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { FaCommentDots } from "react-icons/fa";
+import { useState } from "react";
+import registDragEvent from "../../utils/registDragEvent.ts";
+// import registDragEvent from "/uti";
 
 const reviewList = [
   {
@@ -31,27 +34,64 @@ const reviewList = [
   },
 ];
 
+const SLIDER_WIDTH = 400;
+const SLIDER_HEIGHT = 400;
+// HEIGHT를 정하지 않고, 컨텐츠 길이만큼 알아서 늘어나게 하고 싶을 땐???
+
+const inrange = (v: number, min: number, max: number) => {
+  if (v < min) return min;
+  if (v > max) return max;
+  return v;
+};
+
 function ReviewSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [transX, setTransX] = useState(0);
+
   return (
     <Container>
       <TitleWrapper>
         <FaCommentDots color="#4D95EA" size="30" />
         <h2>고객 후기</h2>
       </TitleWrapper>
-      {reviewList.map((review) => (
-        <ReviewWrapper>
-          <ReviewText>
-            <h3>{review.title}</h3>
-            <p>
-              {review.name} – {review.location}
-            </p>
-          </ReviewText>
-          <ReviewBox>
-            <img src={review.src} alt={review.name} />
-            <p>{review.text}</p>
-          </ReviewBox>
-        </ReviewWrapper>
-      ))}
+      <Viewer style={{ width: SLIDER_WIDTH }}>
+        <Slider
+          style={{
+            transform: `translateX(${-currentIndex * SLIDER_WIDTH + transX}px)`,
+            transition: `transform ${transX ? 0 : 300}ms ease-in-out 0s`,
+          }}
+          {...registDragEvent({
+            onDragChange: (deltaX) => {
+              setTransX(inrange(deltaX, -SLIDER_WIDTH));
+            },
+            onDragEnd: (deltaX) => {
+              const maxIndex = reviewList.length - 1;
+
+              if (deltaX < -100)
+                setCurrentIndex(inrange(currentIndex + 1, 0, maxIndex));
+              if (deltaX > 100)
+                setCurrentIndex(inrange(currentIndex - 1, 0, maxIndex));
+
+              setTransX(0);
+            },
+          })}
+        >
+          {reviewList.map((review) => (
+            <ReviewWrapper key={review.id}>
+              <ReviewText>
+                <h3>{review.title}</h3>
+                <p>
+                  {review.name} – {review.location}
+                </p>
+              </ReviewText>
+              <ReviewBox>
+                <img src={review.src} alt={review.name} draggable={false} />
+                <p>{review.text}</p>
+              </ReviewBox>
+            </ReviewWrapper>
+          ))}
+        </Slider>
+      </Viewer>
     </Container>
   );
 }
@@ -71,6 +111,20 @@ const TitleWrapper = styled.div`
   color: ${({ theme }) => theme.colors.main_blue};
 `;
 
+const Viewer = styled.div`
+  overflow: hidden;
+
+  margin: 50px auto;
+
+  /* width: SLIDER-WIDTH; */
+  /* height: SLIDER-HEIGHT; */
+`;
+
+const Slider = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const ReviewWrapper = styled.div`
   margin: 0 auto;
 
@@ -80,11 +134,13 @@ const ReviewWrapper = styled.div`
   align-items: center;
 
   width: 400px;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 
   text-align: center;
 
   user-select: none;
+
+  flex-shrink: 0;
 `;
 
 const ReviewText = styled.div`
@@ -118,7 +174,10 @@ const ReviewBox = styled.div`
 
   user-select: none;
 
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+
+  img {
+  }
 
   p {
     margin-top: 15px;
